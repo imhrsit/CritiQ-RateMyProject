@@ -1,3 +1,4 @@
+import 'package:critiq/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,18 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'CritiQ',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('CritiQ'),
-          centerTitle: true,
-        ),
-        body: Center(
-          child: Text('Welcome to CritiQ - RateMyProject!'),
-        ),
-      ),
+      home: WelcomeScreen(),
     );
   }
 }
