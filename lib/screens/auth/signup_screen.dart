@@ -29,6 +29,7 @@ class _SignupState extends State<Signup> {
             controller: widget.nameController,
             hinttext: "Name",
             keyboardType: TextInputType.name,
+            textStyle: TextStyle(color: kwhite),
           ),
           const SizedBox(
             height: 16,
@@ -37,6 +38,7 @@ class _SignupState extends State<Signup> {
             controller: widget.emailController,
             hinttext: "Email",
             keyboardType: TextInputType.emailAddress,
+            textStyle: TextStyle(color: kwhite),
           ),
           const SizedBox(
             height: 16,
@@ -45,6 +47,7 @@ class _SignupState extends State<Signup> {
             controller: widget.passwordController,
             hinttext: "Password",
             keyboardType: TextInputType.visiblePassword,
+            textStyle: TextStyle(color: kwhite),
           ),
           const Spacer(flex: 2),
           GestureDetector(

@@ -82,8 +82,6 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     child: Container(
                       height: 400,
                       child: Image.asset('assets/welcome_image2.png'),
-                      decoration: BoxDecoration(
-                          ),
                     ),
                   ),
                 ),
