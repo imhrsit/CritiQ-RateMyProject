@@ -1,6 +1,8 @@
-import 'package:critiq/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:critiq/global/color.dart';
+
+import 'package:critiq/services/auth_services.dart';
+import 'package:critiq/widgets/custom_textfield.dart';
 
 class Login extends StatefulWidget {
   Login(
@@ -10,13 +12,21 @@ class Login extends StatefulWidget {
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
+  final AuthService authService = AuthService();
+
+  void loginUser(BuildContext context) {
+    authService.logInUser( 
+      context: context,
+      email: emailController.text,
+      password: passwordController.text,
+    );
+  }
 
   @override
   State<Login> createState() => _LoginState();
 }
 
 class _LoginState extends State<Login> {
-  bool isLoginTapped = false;
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +52,7 @@ class _LoginState extends State<Login> {
           const Spacer(),
           GestureDetector(
             onTap: () {
-              setState(() {
-                isLoginTapped = true;
-              });
+              widget.loginUser(context);
             },
             child: Container(
               width: double.infinity,
@@ -53,12 +61,8 @@ class _LoginState extends State<Login> {
                 borderRadius: BorderRadius.circular(16),
                 color: kgreyopacity,
               ),
-              child: Center(
-                child: isLoginTapped
-                    ? CircularProgressIndicator(
-                      color: kwhite,
-                    )
-                    : Text(
+              child: const Center(
+                child: Text(
                         "Log In",
                         style: TextStyle(color: kwhite),
                       ),

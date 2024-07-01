@@ -1,6 +1,8 @@
-import 'package:critiq/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:critiq/global/color.dart';
+
+import 'package:critiq/services/auth_services.dart';
+import 'package:critiq/widgets/custom_textfield.dart';
 
 class Signup extends StatefulWidget {
   Signup(
@@ -12,13 +14,23 @@ class Signup extends StatefulWidget {
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final TextEditingController nameController;
+  final AuthService authService = AuthService();
+
+  void signupUser(BuildContext context){
+    authService.signUpUser(
+      context: context,
+      email: emailController.text,
+      name: nameController.text,
+      password: passwordController.text,
+    );
+  }
 
   @override
   State<Signup> createState() => _SignupState();
 }
 
 class _SignupState extends State<Signup> {
-  bool isSignupTapped = false;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -52,9 +64,7 @@ class _SignupState extends State<Signup> {
           const Spacer(flex: 2),
           GestureDetector(
             onTap: () {
-              setState(() {
-                isSignupTapped = true;
-              });
+              widget.signupUser(context);
             },
             child: Container(
               width: double.infinity,
@@ -63,12 +73,8 @@ class _SignupState extends State<Signup> {
                 borderRadius: BorderRadius.circular(16),
                 color: kgreyopacity,
               ),
-              child: Center(
-                child: isSignupTapped
-                    ? const CircularProgressIndicator(
-                        color: kwhite,
-                      )
-                    : const Text(
+              child: const Center(
+                child: Text(
                         "Sign Up",
                         style: TextStyle(color: kwhite),
                       ),
