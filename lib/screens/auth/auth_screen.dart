@@ -47,89 +47,91 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
       ),
       backgroundColor: kgrey,
       body: Center(
-        child: Column(
-          children: [
-            Container(
-              margin: EdgeInsets.only(bottom: 90),
-              child: const Text(
-                  'CritiQ',
-                  style: TextStyle(
-                      color: kwhite,
-                      fontSize: 32,
-                      fontWeight: FontWeight.w600),
-                ),
-            ),
-            Container(
-              height: 60,
-              child: Theme(
-                data: Theme.of(context).copyWith(
-                  colorScheme: Theme.of(context).colorScheme.copyWith(
-                        surfaceVariant: Colors.transparent,
-                      ),
-                ),
-                child: TabBar(
-                  tabAlignment: TabAlignment.center,
-                  tabs: [
-                    Tab(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: activeTabIndex == 0 ? kwhite : kgreyopacity,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 50, vertical: 10),
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(
-                                color: kblackHeading),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Tab(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: activeTabIndex == 1 ? kwhite : kgreyopacity,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 50, vertical: 10),
-                          child: Text(
-                            'Log In',
-                            style: TextStyle(
-                                color: kblackHeading),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                  indicator: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.only(bottom: 90),
+                child: const Text(
+                    'CritiQ',
+                    style: TextStyle(
+                        color: kwhite,
+                        fontSize: 32,
+                        fontWeight: FontWeight.w600),
                   ),
-                  controller: _tabController,
-                  isScrollable: true,
-                              
+              ),
+              Container(
+                height: 60,
+                child: Theme(
+                  data: Theme.of(context).copyWith(
+                    colorScheme: Theme.of(context).colorScheme.copyWith(
+                          surfaceVariant: Colors.transparent,
+                        ),
+                  ),
+                  child: TabBar(
+                    tabAlignment: TabAlignment.center,
+                    tabs: [
+                      Tab(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: activeTabIndex == 0 ? kwhite : kgreyopacity,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 50, vertical: 10),
+                            child: Text(
+                              'Sign Up',
+                              style: TextStyle(
+                                  color: kblackHeading),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Tab(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: activeTabIndex == 1 ? kwhite : kgreyopacity,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 50, vertical: 10),
+                            child: Text(
+                              'Log In',
+                              style: TextStyle(
+                                  color: kblackHeading),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                    indicator: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    controller: _tabController,
+                    isScrollable: true,
+                                
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: MediaQuery.sizeOf(context).height * 0.5,
-              child: TabBarView(
-                controller: _tabController,
-                children: [
-                  Signup(
-                      emailController: emailController,
-                      passwordController: passwordController,
-                      nameController: nameController),
-                  Login(
-                      emailController: emailController,
-                      passwordController: passwordController),
-                ],
+              SizedBox(
+                height: MediaQuery.sizeOf(context).height * 0.5,
+                child: TabBarView(
+                  controller: _tabController,
+                  children: [
+                    Signup(
+                        emailController: emailController,
+                        passwordController: passwordController,
+                        nameController: nameController),
+                    Login(
+                        emailController: emailController,
+                        passwordController: passwordController),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
