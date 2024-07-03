@@ -1,3 +1,4 @@
+import 'package:critiq/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:critiq/global/color.dart';
 

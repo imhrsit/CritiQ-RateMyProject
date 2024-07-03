@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:critiq/screens/auth/auth_screen.dart';
 import 'package:critiq/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -82,4 +83,46 @@ class AuthService{
       showSnackbar(context, e.toString());
     }
   }
+
+  void getUserData(BuildContext context) async {
+    try {
+      var userProvider = Provider.of<UserProvider>(context, listen: false);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('x-auth-token');
+      if(token == null){
+        prefs.setString('x-auth-token', '');
+      }
+      var tokenRes = await http.post(
+        Uri.parse('${Constants.uri}/tokenIsValid'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'x-auth-token': token!,
+        },
+      );
+      var response = jsonDecode(tokenRes.body);
+      if(response==true){
+        http.Response userRes = await http.get(
+          Uri.parse('${Constants.uri}/'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            'x-auth-token': token,
+          },
+        );
+        userProvider.setUser(userRes.body); 
+      }
+    } catch (e) {
+      showSnackbar(context, e.toString());
+    }
+  }
+
+  void signOutUser(BuildContext context) async {
+    try {
+      final navigator = Navigator.of(context);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('x-auth-token', '');
+      navigator.pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const AuthScreen()), (route) => false);
+    } catch (e) {
+      showSnackbar(context, e.toString());
+    }
+  } 
 }

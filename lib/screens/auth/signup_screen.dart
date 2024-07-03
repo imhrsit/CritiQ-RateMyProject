@@ -1,3 +1,4 @@
+import 'package:critiq/screens/home/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:critiq/global/color.dart';
 
@@ -64,7 +65,8 @@ class _SignupState extends State<Signup> {
           const Spacer(flex: 2),
           GestureDetector(
             onTap: () {
-              widget.signupUser(context);
+              // widget.signupUser(context);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const Homescreen()));
             },
             child: Container(
               width: double.infinity,
