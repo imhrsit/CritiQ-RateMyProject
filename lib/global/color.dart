@@ -11,3 +11,4 @@ Color kblackHeading = const Color(0xFF000000).withOpacity(0.7);
 Color kblackSubHeading = const Color(0xFF000000).withOpacity(0.6);
 const Color kwhite = Color.fromARGB(255, 237, 231, 231);
 Color kgreyopacity = Colors.grey.withOpacity(0.5);
+Color kwhiteopacity = Color.fromARGB(255, 176, 174, 174).withOpacity(0.5);

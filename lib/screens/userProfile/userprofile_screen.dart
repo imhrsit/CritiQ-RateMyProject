@@ -1,14 +1,14 @@
 import 'package:critiq/global/color.dart';
+import 'package:critiq/services/auth_services.dart';
 import 'package:flutter/material.dart';
 
-class Homescreen extends StatefulWidget {
-  const Homescreen({super.key});
+class UserProfileScreen extends StatelessWidget {
+  const UserProfileScreen({super.key});
 
-  @override
-  State<Homescreen> createState() => _HomescreenState();
-}
+  void signoutUser(BuildContext context){
+    AuthService().signOutUser(context);
+  }
 
-class _HomescreenState extends State<Homescreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,11 +19,20 @@ class _HomescreenState extends State<Homescreen> {
             floating: false,
             snap: false,
             pinned: true,
+            actions: [
+              IconButton(
+                icon: Icon(Icons.exit_to_app_outlined, color: kwhite),
+                padding: const EdgeInsets.only(right: 20),
+                onPressed: () {
+                  AuthService().signOutUser(context);
+                },
+              ),
+            ],
             backgroundColor: kgreyopacity,
             expandedHeight: 50,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'CritiQ',
+                'Profile',
                 style: TextStyle(
                   color: kwhite,
                   fontSize: 26,
@@ -36,5 +45,6 @@ class _HomescreenState extends State<Homescreen> {
         ],
       ),
     );
+    
   }
 }
