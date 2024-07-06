@@ -48,7 +48,9 @@ class _WelcomeScreenState extends State<WelcomeScreen>
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: kgrey,
-        body: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        body: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+        children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -80,7 +82,8 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   child: Hero(
                     tag: "welcome",
                     child: Container(
-                      height: 400,
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height * 0.5,
                       child: Image.asset('assets/welcome_image2.png'),
                     ),
                   ),

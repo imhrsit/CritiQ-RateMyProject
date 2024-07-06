@@ -27,6 +27,17 @@ class LeaderboardScreen extends StatelessWidget {
               centerTitle: true,
               titlePadding: EdgeInsets.only(bottom: 10),
             ),
+          ),
+          SliverFillRemaining(
+            child: Center(
+              child: Text(
+                'Leaderboard Screen',
+                style: TextStyle(
+                  color: kwhite,
+                  fontSize: 26,
+                ),
+              ),
+            ),
           )
         ],
       ),
