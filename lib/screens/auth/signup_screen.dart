@@ -1,4 +1,3 @@
-import 'package:critiq/screens/home/home_screen.dart';
 import 'package:critiq/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:critiq/global/color.dart';
