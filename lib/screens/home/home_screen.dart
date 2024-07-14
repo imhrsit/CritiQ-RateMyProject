@@ -74,7 +74,7 @@ class _HomescreenState extends State<Homescreen> {
                   width: width,
                   decoration: BoxDecoration(
                     color: kgreyopacity,
-                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    borderRadius: BorderRadius.all(Radius.elliptical(40, 20)),
                   ),
                   child: Container(
                     padding: EdgeInsets.only(top: 10, left: 20),
@@ -99,6 +99,71 @@ class _HomescreenState extends State<Homescreen> {
                       ],
                     ),
                   )
+                ),
+                SizedBox(height: height*0.015),
+                Container(
+                  padding: EdgeInsets.only(left: 10),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Evaluate your projects here 👇',
+                    style: TextStyle(
+                      color: kwhite,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+                SizedBox(height: height*0.015),
+                Container(
+                  height: height * 0.06,
+                  width: width,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: kwhite),
+                    color: kgreyopacity,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                ),
+                SizedBox(height: height*0.015),
+                Center(
+                    child: Text(
+                      'OR',
+                      style: TextStyle(
+                        color: kwhite,
+                        fontSize: 20,
+                      ),
+                    ),
+                  ),
+                SizedBox(height: height*0.015),
+                Container(
+                  height: height * 0.2,
+                  width: width,
+                  decoration: BoxDecoration(
+                    color: kgreyopacity,
+                    border: Border.all(color: kwhite),
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                ),
+                SizedBox(height: height*0.015),
+                OutlinedButton(
+                  onPressed: (){},
+                  child: Text(
+                    'Analyze',
+                    style: TextStyle(
+                      color: kwhite,
+                      fontSize: 20,
+                    ),
+                  )
+                  ),
+                SizedBox(height: height*0.015),
+                Container(
+                  padding: EdgeInsets.only(left: 10),
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Recent Projects',
+                    style: TextStyle(
+                      color: kwhite,
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
               ],
             )

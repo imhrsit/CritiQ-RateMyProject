@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:critiq/screens/auth/auth_screen.dart';
-import 'package:critiq/widgets/navbar.dart';
+import 'package:critiq/widgets/navbarScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -73,7 +73,7 @@ class AuthService{
           userProvider.setUser(response.body);
           await prefs.setString('x-auth-token', jsonDecode(response.body)['token']);
           navigator.pushAndRemoveUntil(
-            MaterialPageRoute(builder: (context) => const NavBar(),
+            MaterialPageRoute(builder: (context) => const NavBarScreen(),
             ),
             (route) => false,
             );

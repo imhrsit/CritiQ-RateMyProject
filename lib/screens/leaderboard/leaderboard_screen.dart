@@ -31,7 +31,7 @@ class LeaderboardScreen extends StatelessWidget {
           SliverFillRemaining(
             child: Center(
               child: Text(
-                'Leaderboard Screen',
+                'Coming soon',
                 style: TextStyle(
                   color: kwhite,
                   fontSize: 26,

@@ -18,7 +18,7 @@ class CompetitionScreen extends StatelessWidget {
             expandedHeight: 50,
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                'Hackathons',
+                'Competitions',
                 style: TextStyle(
                   color: kwhite,
                   fontSize: 26,
@@ -31,7 +31,7 @@ class CompetitionScreen extends StatelessWidget {
           SliverFillRemaining(
             child: Center(
               child: Text(
-                'Hackathon Screen',
+                'Coming soon',
                 style: TextStyle(
                   color: kwhite,
                   fontSize: 26,

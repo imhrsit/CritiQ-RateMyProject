@@ -1,4 +1,3 @@
-import 'package:critiq/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:critiq/global/color.dart';
 
@@ -65,8 +64,7 @@ class _SignupState extends State<Signup> {
           const Spacer(flex: 2),
           GestureDetector(
             onTap: () {
-              // widget.signupUser(context);
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const NavBar()));
+              widget.signupUser(context);
             },
             child: Container(
               width: double.infinity,

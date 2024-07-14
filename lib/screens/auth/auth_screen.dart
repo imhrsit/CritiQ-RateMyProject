@@ -20,9 +20,9 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-
     _tabController = TabController(length: 2, vsync: this);
-    void setActiveTabIndex() {
+
+  void setActiveTabIndex() {
       setState(() {
         activeTabIndex = _tabController.index;
       });

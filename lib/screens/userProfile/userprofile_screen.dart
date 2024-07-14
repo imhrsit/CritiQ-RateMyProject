@@ -24,7 +24,7 @@ class UserProfileScreen extends StatelessWidget {
                 icon: Icon(Icons.exit_to_app_outlined, color: kwhite),
                 padding: const EdgeInsets.only(right: 20),
                 onPressed: () {
-                  AuthService().signOutUser(context);
+                  //signoutUser(context);
                 },
               ),
             ],
@@ -45,7 +45,7 @@ class UserProfileScreen extends StatelessWidget {
           SliverFillRemaining(
             child: Center(
               child: Text(
-                'User Profile',
+                'Coming soon',
                 style: TextStyle(
                   color: kwhite,
                   fontSize: 26,

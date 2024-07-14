@@ -1,7 +1,7 @@
 import 'package:critiq/providers/user_provider.dart';
 import 'package:critiq/screens/welcome/welcome_screen.dart';
 import 'package:critiq/services/auth_services.dart';
-import 'package:critiq/widgets/navbar.dart';
+import 'package:critiq/widgets/navbarScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -35,7 +35,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'CritiQ',
-      home: Provider.of<UserProvider>(context).user.token.isEmpty ? const WelcomeScreen() : const NavBar(),
+      home: Provider.of<UserProvider>(context).user.token.isEmpty ? const WelcomeScreen() : const NavBarScreen(),
     );
   }
 }
