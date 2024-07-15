@@ -19,25 +19,25 @@ class NavBarScreen extends StatelessWidget {
       tabs: [
         PersistentTabConfig(
           screen: Homescreen(),
-          item: ItemConfig(icon: Icon(Icons.home_rounded), title: "Home"),
+          item: ItemConfig(icon: Icon(Icons.home_rounded), title: "Home", activeForegroundColor: kdarkBlue, inactiveForegroundColor: kwhite),
           ),
         PersistentTabConfig(
           screen: CompetitionScreen(),
-          item: ItemConfig(icon: Icon(Icons.code_rounded), title: "Competitions"),
+          item: ItemConfig(icon: Icon(Icons.code_rounded), title: "Competitions", activeForegroundColor: kdarkBlue, inactiveForegroundColor: kwhite),
           ),
         PersistentTabConfig(
           screen: LeaderboardScreen(),
-          item: ItemConfig(icon: Icon(Icons.format_list_numbered_rounded), title: "Leaderboard"),
+          item: ItemConfig(icon: Icon(Icons.format_list_numbered_rounded), title: "Leaderboard", activeForegroundColor: kdarkBlue, inactiveForegroundColor: kwhite),
           ),
         PersistentTabConfig(
           screen: UserProfileScreen(),
-          item: ItemConfig(icon: Icon(Icons.person), title: "Profile"),
+          item: ItemConfig(icon: Icon(Icons.person), title: "Profile", activeForegroundColor: kdarkBlue, inactiveForegroundColor: kwhite),
           ),
       ],
-      navBarBuilder: (navBarConfig) => Style10BottomNavBar(
+      navBarBuilder: (navBarConfig) => Style3BottomNavBar(
         navBarConfig: navBarConfig,
         navBarDecoration: NavBarDecoration(
-          color: kwhite.withOpacity(0.5),
+          color: kgreyopacity,
           ),
         ),
       );
