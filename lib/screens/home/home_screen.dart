@@ -84,20 +84,21 @@ class _HomescreenState extends State<Homescreen> {
                 Container(
                   height: height * 0.3,
                   width: width,
-                  decoration: BoxDecoration(
-                    color: kgreyopacity,
-                    borderRadius: const BorderRadius.all(Radius.elliptical(40, 20)),
-                  ),
+                  // decoration: BoxDecoration(
+                  //   color: kgreyopacity,
+                  //   borderRadius: const BorderRadius.all(Radius.elliptical(40, 20)),
+                  // ),
                   child: Container(
                     padding: const EdgeInsets.only(top: 10, left: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '$_greeting, ${user.name}',
+                          '$_greeting, ${user.name.split(' ')[0]}',
                           style: const TextStyle(
                             color: kwhite,
-                            fontSize: 26,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         Row(
@@ -112,7 +113,7 @@ class _HomescreenState extends State<Homescreen> {
                               ),
                               child: const Center(
                                 child: Text(
-                                  'Jack: Hey, I’m not your personal assistant, figure it out yourself...',
+                                  'Hey, I`m watching your ratings. See you at the leaderboard! 🏆',
                                   style: TextStyle(
                                     color: kwhite,
                                     fontSize: 16,
@@ -158,9 +159,9 @@ class _HomescreenState extends State<Homescreen> {
                                   ],
                                 ),
                                     Image.asset(
-                                  'assets/welcome_image1.png',
+                                  'assets/jack_image3.png',
                                   width: width * 0.5,
-                                  height: height * 0.23,
+                                  height: height * 0.25,
                                   alignment: Alignment.centerRight,
                                 ),
                               ] 

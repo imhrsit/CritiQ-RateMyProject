@@ -24,7 +24,7 @@ class UserProfileScreen extends StatelessWidget {
                 icon: Icon(Icons.exit_to_app_outlined, color: kwhite),
                 padding: const EdgeInsets.only(right: 20),
                 onPressed: () {
-                  //signoutUser(context);
+                  signoutUser(context);
                 },
               ),
             ],
