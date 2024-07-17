@@ -8,39 +8,39 @@ class ProjectReviewScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kgrey,
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            floating: false,
-            snap: false,
-            pinned: true,
-            backgroundColor: kgreyopacity,
-            expandedHeight: 50,
-            flexibleSpace: FlexibleSpaceBar(
-              title: Text(
-                'Project Overview',
-                style: TextStyle(
-                  color: kwhite,
-                  fontSize: 26,
+      body: NestedScrollView(
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+              floating: true,
+              snap: true,
+              pinned: false,
+              backgroundColor: kgreyopacity,
+              expandedHeight: 50,
+              flexibleSpace: FlexibleSpaceBar(
+                title: Text(
+                  'Project Overview',
+                  style: TextStyle(
+                    color: kwhite,
+                    fontSize: 26,
+                  ),
                 ),
+                centerTitle: true,
+                titlePadding: EdgeInsets.only(bottom: 10),
               ),
-              centerTitle: true,
-              titlePadding: EdgeInsets.only(bottom: 10),
+            ),
+          ];
+        },
+        body: Center(
+          child: Text(
+            'Coming soon',
+            style: TextStyle(
+              color: kwhite,
+              fontSize: 26,
             ),
           ),
-          SliverFillRemaining(
-            child: Center(
-              child: Text(
-                'Coming soon',
-                style: TextStyle(
-                  color: kwhite,
-                  fontSize: 26,
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
+        ),
+        ),
     );
   }
 }

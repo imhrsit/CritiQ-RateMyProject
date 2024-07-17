@@ -1,4 +1,5 @@
 import 'package:critiq/global/color.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -15,12 +16,13 @@ class LeaderboardScreen extends StatelessWidget {
     // final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       backgroundColor: kgrey,
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            floating: false,
-            snap: false,
-            pinned: true,
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+            floating: true,
+            snap: true,
+            pinned: false,
             backgroundColor: kgreyopacity,
             expandedHeight: 50,
             flexibleSpace: const FlexibleSpaceBar(
@@ -35,175 +37,177 @@ class LeaderboardScreen extends StatelessWidget {
               titlePadding: EdgeInsets.only(bottom: 10),
             ),
           ),
-          SliverFillRemaining(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    Column(
-                      children: [
-                        Container(
-                          width: width * 0.25,
-                          height: height * 0.2,
-                          child: Image.asset(
-                            'assets/jack_image2.png',
-                            fit: BoxFit.cover,
+          ];
+        },
+        body: SingleChildScrollView(
+          child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Column(
+                        children: [
+                          Container(
+                            width: width * 0.25,
+                            height: height * 0.2,
+                            child: Image.asset(
+                              'assets/jack_image2.png',
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        Container(
-                          width: width * 0.25,
-                          height: height * 0.2,
-                          decoration: BoxDecoration(
-                            color: kyellow,
-                            borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+                          Container(
+                            width: width * 0.25,
+                            height: height * 0.2,
+                            decoration: BoxDecoration(
+                              color: kyellow,
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(height: height * 0.01),
+                                Text(
+                                  'Aditi',
+                                  style: TextStyle(
+                                    color: kDefaultIconLightColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: height * 0.02),
+                                Text(
+                                  '1340 pts',
+                                  style: TextStyle(
+                                    color: kDefaultIconLightColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: height * 0.04),
+                                Text(
+                                  '2',
+                                  style: TextStyle(
+                                    color: kDefaultIconLightColor,
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          child: Column(
-                            children: [
-                              SizedBox(height: height * 0.01),
-                              Text(
-                                'Aditi',
-                                style: TextStyle(
-                                  color: kDefaultIconLightColor,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(height: height * 0.02),
-                              Text(
-                                '1340 pts',
-                                style: TextStyle(
-                                  color: kDefaultIconLightColor,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(height: height * 0.04),
-                              Text(
-                                '2',
-                                style: TextStyle(
-                                  color: kDefaultIconLightColor,
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            width: width * 0.25,
+                            height: height * 0.2,
+                            child: Image.asset(
+                              'assets/jack_image_1.png',
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          width: width * 0.25,
-                          height: height * 0.2,
-                          child: Image.asset(
-                            'assets/jack_image_1.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Container(
-                          width: width * 0.25,
-                          height: height * 0.25,
-                          decoration: BoxDecoration(
-                            color: kdarkBlueMuted,
-                            borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
-                          ),
-                          child: Column(
-                            children: [
-                              SizedBox(height: height * 0.01),
-                              Text(
-                                'Udit',
-                                style: TextStyle(
-                                  color: kDefaultIconLightColor,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                          Container(
+                            width: width * 0.25,
+                            height: height * 0.25,
+                            decoration: BoxDecoration(
+                              color: kdarkBlueMuted,
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(height: height * 0.01),
+                                Text(
+                                  'Udit',
+                                  style: TextStyle(
+                                    color: kDefaultIconLightColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: height * 0.03),
-                              Text(
-                                '1470 pts',
-                                style: TextStyle(
-                                  color: kDefaultIconLightColor,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                                SizedBox(height: height * 0.03),
+                                Text(
+                                  '1470 pts',
+                                  style: TextStyle(
+                                    color: kDefaultIconLightColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: height * 0.08),
-                              Text(
-                                '1',
-                                style: TextStyle(
-                                  color: kDefaultIconLightColor,
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold,
+                                SizedBox(height: height * 0.08),
+                                Text(
+                                  '1',
+                                  style: TextStyle(
+                                    color: kDefaultIconLightColor,
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: [
-                        Container(
-                          width: width * 0.25,
-                          height: height * 0.2,
-                          child: Image.asset(
-                            'assets/jack_image_4.png',
-                            fit: BoxFit.cover,
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          Container(
+                            width: width * 0.25,
+                            height: height * 0.19,
+                            child: Image.asset(
+                              'assets/jack_image_4.png',
+                              fit: BoxFit.cover,
+                            ),
                           ),
-                        ),
-                        Container(
-                          width: width * 0.25,
-                          height: height * 0.15,
-                          decoration: BoxDecoration(
-                            color: kpurple,
-                            borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+                          Container(
+                            width: width * 0.25,
+                            height: height * 0.15,
+                            decoration: BoxDecoration(
+                              color: kpurple,
+                              borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+                            ),
+                            child: Column(
+                              children: [
+                                SizedBox(height: height * 0.005),
+                                Text(
+                                  'Harsh',
+                                  style: TextStyle(
+                                    color: kDefaultIconLightColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: height * 0.01),
+                                Text(
+                                  '1202 pts',
+                                  style: TextStyle(
+                                    color: kDefaultIconLightColor,
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                SizedBox(height: height * 0.004),
+                                Text(
+                                  '3',
+                                  style: TextStyle(
+                                    color: kDefaultIconLightColor,
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                          child: Column(
-                            children: [
-                              SizedBox(height: height * 0.01),
-                              Text(
-                                'Harsh',
-                                style: TextStyle(
-                                  color: kDefaultIconLightColor,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(height: height * 0.01),
-                              Text(
-                                '1202 pts',
-                                style: TextStyle(
-                                  color: kDefaultIconLightColor,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              SizedBox(height: height * 0.004),
-                              Text(
-                                '3',
-                                style: TextStyle(
-                                  color: kDefaultIconLightColor,
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                //below graph content
-                Expanded(
-                  child: ListView.builder(
+                        ],
+                      ),
+                    ],
+                  ),
+                  //below graph content
+                  ListView.builder(
+                    physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: 10,
                     scrollDirection: Axis.vertical,
+                    itemCount: 10,
                     itemBuilder: (context, index) {
                       // Replace the following placeholders with actual data
                       String rank = (index + 1).toString();
@@ -245,13 +249,11 @@ class LeaderboardScreen extends StatelessWidget {
                         ),
                       );
                     },
-                  ),
-                )
-              ],
-            )
+                  )
+                ],
+              ),
+        )
           )
-        ],
-      ),
-    );
+      );
   }
 }

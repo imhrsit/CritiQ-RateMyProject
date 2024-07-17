@@ -15,7 +15,6 @@ class NavBarScreen extends StatelessWidget {
       gestureNavigationEnabled: true,
       backgroundColor: kgrey,
       controller: PersistentTabController(initialIndex: 0),
-      popAllScreensOnTapAnyTabs: true,
       tabs: [
         PersistentTabConfig(
           screen: Homescreen(),

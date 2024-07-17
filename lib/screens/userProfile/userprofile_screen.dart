@@ -1,6 +1,10 @@
-import 'package:critiq/global/color.dart';
-import 'package:critiq/services/auth_services.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:critiq/global/color.dart';
+import 'package:critiq/providers/user_provider.dart';
+import 'package:critiq/services/auth_services.dart';
+import 'package:syncfusion_flutter_gauges/gauges.dart';
 
 class UserProfileScreen extends StatelessWidget {
   const UserProfileScreen({super.key});
@@ -11,6 +15,9 @@ class UserProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       backgroundColor: kgrey,
       body: CustomScrollView(
@@ -18,16 +25,7 @@ class UserProfileScreen extends StatelessWidget {
           SliverAppBar(
             floating: false,
             snap: false,
-            pinned: true,
-            actions: [
-              IconButton(
-                icon: Icon(Icons.exit_to_app_outlined, color: kwhite),
-                padding: const EdgeInsets.only(right: 20),
-                onPressed: () {
-                  signoutUser(context);
-                },
-              ),
-            ],
+            pinned: false,
             backgroundColor: kgreyopacity,
             expandedHeight: 50,
             flexibleSpace: FlexibleSpaceBar(
@@ -43,15 +41,160 @@ class UserProfileScreen extends StatelessWidget {
             ),
           ),
           SliverFillRemaining(
-            child: Center(
-              child: Text(
-                'Coming soon',
-                style: TextStyle(
-                  color: kwhite,
-                  fontSize: 26,
+            child: Column(
+              children: [
+                SizedBox(height: height*0.04),
+                CircleAvatar(
+                  radius: 80,
+                  backgroundColor: kwhite,
+                  child: Icon(
+                    //can use file picker to get image
+                    Icons.person,
+                    size: 100,
+                    color: kblackHeading,
+                  ),
                 ),
-              ),
-            ),
+                SizedBox(height: height*0.01),
+                Text(
+                  user.name,
+                  style: TextStyle(
+                    color: kwhite,
+                    fontSize: 24,
+                  ),
+                ),
+                SizedBox(height: height*0.003),
+                Text(
+                  user.email,
+                  style: TextStyle(
+                    color: kwhite,
+                    fontSize: 18,
+                  ),
+                ),
+                SizedBox(height: height*0.02),
+                SizedBox(
+                  height: height*0.2,
+                  width: width*0.45,
+                  child: SfRadialGauge(
+                    axes: [
+                      RadialAxis(
+                        minimum: 0,
+                        maximum: 100,
+                        showLabels: false,
+                        showTicks: false,
+                        axisLineStyle: AxisLineStyle(
+                          thickness: 0.2,
+                          cornerStyle: CornerStyle.bothCurve,
+                          color: kgreyopacity,
+                          thicknessUnit: GaugeSizeUnit.factor,
+                        ),
+                        pointers: <GaugePointer>[
+                          RangePointer(
+                            value: 70, //to be change dynamically acc to points later //progressValue
+                            cornerStyle: CornerStyle.bothCurve,
+                            width: 0.2,
+                            sizeUnit: GaugeSizeUnit.factor,
+                            color: kdarkBlueMuted,
+                            gradient: SweepGradient(colors: <Color>[
+                              kdarkBlue,
+                              kdarkBlueMuted
+                            ],),
+                          )
+                        ],
+                        annotations: <GaugeAnnotation>[
+                          GaugeAnnotation(
+                            positionFactor: 0.1,
+                            angle: 90,
+                            widget: Text(
+                              '7/10',  //progressValue.toStringAsFixed(0) + ' / 100'
+                              style: TextStyle(
+                                color: kwhite,
+                                fontSize: 24,
+                              ),
+                            ),
+                            )
+                        ],
+                      ),
+                    ],
+                  )
+                ),
+                Text(
+                  'Overall Rating',
+                  style: TextStyle(
+                    color: kwhite,
+                    fontSize: 24,
+                  ),
+                ),
+                SizedBox(height: height*0.05),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  alignment: Alignment.centerLeft,
+                  decoration: BoxDecoration(
+                    color: kgreyopacity,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    'Terms and Conditions',
+                    style: TextStyle(
+                      color: kdarkBlue,
+                      fontSize: 18,
+                    )
+                  ),
+                ),
+                SizedBox(height: height*0.01),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  alignment: Alignment.centerLeft,
+                  decoration: BoxDecoration(
+                    color: kgreyopacity,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    'Privacy Policy',
+                    style: TextStyle(
+                      color: kdarkBlue,
+                      fontSize: 18,
+                    )
+                  ),
+                ),
+                SizedBox(height: height*0.01),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  alignment: Alignment.centerLeft,
+                  decoration: BoxDecoration(
+                    color: kgreyopacity,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    'Help and Feedback',
+                    style: TextStyle(
+                      color: kdarkBlue,
+                      fontSize: 18,
+                    )
+                  ),
+                ),
+                SizedBox(height: height*0.01),
+                InkWell(
+                  onTap: () {
+                    signoutUser(context);
+                  },
+                  child: Container(
+                    padding: EdgeInsets.all(10),
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      color: kgreyopacity,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      'Sign Out',
+                      style: TextStyle(
+                        color: kdarkBlue,
+                        fontSize: 18,
+                      )
+                    ),
+                  ),
+                ),
+              ],
+            )
           )
         ],
       ),

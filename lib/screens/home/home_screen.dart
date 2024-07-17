@@ -57,12 +57,13 @@ class _HomescreenState extends State<Homescreen> {
     final user = Provider.of<UserProvider>(context).user;
     return Scaffold(
       backgroundColor: kgrey,
-      body: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            floating: false,
-            snap: false,
-            pinned: true,
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            SliverAppBar(
+            floating: true,
+            snap: true,
+            pinned: false,
             backgroundColor: kgreyopacity,
             expandedHeight: 50,
             flexibleSpace: const FlexibleSpaceBar(
@@ -77,8 +78,10 @@ class _HomescreenState extends State<Homescreen> {
               titlePadding: EdgeInsets.only(bottom: 10),
             ),
           ),
-          SliverFillRemaining(
-            child: Column(
+          ];
+        },
+        body: SingleChildScrollView(
+          child: Column(
               children: [
                 const SizedBox(height: 10),
                 Container(
@@ -211,7 +214,7 @@ class _HomescreenState extends State<Homescreen> {
                         alignLabelWithHint: true,
                       ),
                       style: const TextStyle(color: kwhite),
-
+            
                       validator: (value) {
                         if (value==null || value.isEmpty || value.length < 10){
                           return 'Please enter a valid URL';
@@ -345,9 +348,8 @@ class _HomescreenState extends State<Homescreen> {
                   ),
                 ),
               ],
-            )
-          )
-        ],
+            ),
+        )
       ),
     );
   }
