@@ -25,7 +25,7 @@ class _HomescreenState extends State<Homescreen> {
   String _response = '';
   
   Future<void> _sendMessage() async{
-    final message = _urlController.text;
+    final message = 'Analyse this project based on the url given below and first give the overall rating for this website out of 10 and then rate it in different categories in the following order - 1. Functionality & Usability 2. Content 3. Design & Aesthetics 4. Technical Aspects 5. User Experience (UX) 6. Branding & Messaging 7. Social Proof & Trust 8. Call to Action (CTA) 9. Analytics & Tracking 10. Future-Proofing. URL - ${_urlController.text}. If you are not able to analyze the given URL then give any demo ratings of every category but dont show any other message in any case.';
     try {
       final response = await http.post(
         Uri.parse('${Constants.uri}/api/gemini'),
@@ -40,19 +40,6 @@ class _HomescreenState extends State<Homescreen> {
         setState(() {
           _response = response.body;
         });
-      } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: kwhite,
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(top: Radius.elliptical(15, 15)),
-            ),
-            content: Text(
-              'Error: ${response.statusCode}',
-              style: TextStyle(color: kblackHeading, fontSize: 15),
-            ),
-          ),
-        );
       }
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -62,7 +49,7 @@ class _HomescreenState extends State<Homescreen> {
             borderRadius: BorderRadius.vertical(top: Radius.elliptical(15, 15)),
           ),
           content: Text(
-            'Error: $e',
+            'Failed to analyze the project',
             style: TextStyle(color: kblackHeading, fontSize: 15),
           ),
         ),
@@ -366,16 +353,14 @@ class _HomescreenState extends State<Homescreen> {
                         );
                       }
                       else {
-                        _sendMessage();
                         setState(() {
                           _buttonText = 'Analyzing...';
                         });
+                        _sendMessage().then((value) => setState(() {
+                          _buttonText = 'Analyze';
+                        }),
+                        );
                       }
-                    Future.delayed(const Duration(seconds: 3), () {
-                      setState(() {
-                        _buttonText = 'Analyze';
-                      });
-                    });
                     }
                   },
                   child: Text(
@@ -391,7 +376,7 @@ class _HomescreenState extends State<Homescreen> {
                   padding: const EdgeInsets.only(left: 10),
                   alignment: Alignment.centerLeft,
                   child: const Text(
-                    'Recent Projects',
+                    'Project Overview',
                     style: TextStyle(
                       color: kwhite,
                       fontSize: 20,
@@ -400,7 +385,7 @@ class _HomescreenState extends State<Homescreen> {
                   ),
                 ),
                 Padding(padding: EdgeInsets.all(10),
-                child: Text('$_response',
+                child: Text('${_response}',
                 style: TextStyle(
                   color: kwhite,
                   fontSize: 20,
