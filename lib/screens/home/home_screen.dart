@@ -1,5 +1,9 @@
+import 'dart:convert';
+
+import 'package:critiq/global/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 
 import 'package:critiq/global/color.dart';
 import 'package:critiq/providers/user_provider.dart';
@@ -18,6 +22,53 @@ class _HomescreenState extends State<Homescreen> {
   final _urlController = TextEditingController();
   String _buttonText = 'Analyze';
   String? _fileName;
+  String _response = '';
+  
+  Future<void> _sendMessage() async{
+    final message = _urlController.text;
+    try {
+      final response = await http.post(
+        Uri.parse('${Constants.uri}/api/gemini'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode({
+          'message': message,
+        }),
+      );
+      if (response.statusCode == 200) {
+        setState(() {
+          _response = response.body;
+        });
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: kwhite,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.elliptical(15, 15)),
+            ),
+            content: Text(
+              'Error: ${response.statusCode}',
+              style: TextStyle(color: kblackHeading, fontSize: 15),
+            ),
+          ),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          backgroundColor: kwhite,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.elliptical(15, 15)),
+          ),
+          content: Text(
+            'Error: $e',
+            style: TextStyle(color: kblackHeading, fontSize: 15),
+          ),
+        ),
+      );
+    }
+  }
 
   @override
   void dispose() {
@@ -315,6 +366,7 @@ class _HomescreenState extends State<Homescreen> {
                         );
                       }
                       else {
+                        _sendMessage();
                         setState(() {
                           _buttonText = 'Analyzing...';
                         });
@@ -346,6 +398,14 @@ class _HomescreenState extends State<Homescreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                ),
+                Padding(padding: EdgeInsets.all(10),
+                child: Text('$_response',
+                style: TextStyle(
+                  color: kwhite,
+                  fontSize: 20,
+                ),
+                ),
                 ),
               ],
             ),
