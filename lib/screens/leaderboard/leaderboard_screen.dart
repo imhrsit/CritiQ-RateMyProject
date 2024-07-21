@@ -68,7 +68,7 @@ class LeaderboardScreen extends StatelessWidget {
                               children: [
                                 SizedBox(height: height * 0.01),
                                 Text(
-                                  'Aditi',
+                                  'User 2',
                                   style: TextStyle(
                                     color: kDefaultIconLightColor,
                                     fontSize: 20,
@@ -77,7 +77,7 @@ class LeaderboardScreen extends StatelessWidget {
                                 ),
                                 SizedBox(height: height * 0.02),
                                 Text(
-                                  '1340 pts',
+                                  '900 pts',
                                   style: TextStyle(
                                     color: kDefaultIconLightColor,
                                     fontSize: 20,
@@ -119,7 +119,7 @@ class LeaderboardScreen extends StatelessWidget {
                               children: [
                                 SizedBox(height: height * 0.01),
                                 Text(
-                                  'Udit',
+                                  'User 1',
                                   style: TextStyle(
                                     color: kDefaultIconLightColor,
                                     fontSize: 20,
@@ -128,7 +128,7 @@ class LeaderboardScreen extends StatelessWidget {
                                 ),
                                 SizedBox(height: height * 0.03),
                                 Text(
-                                  '1470 pts',
+                                  '1000 pts',
                                   style: TextStyle(
                                     color: kDefaultIconLightColor,
                                     fontSize: 20,
@@ -170,7 +170,7 @@ class LeaderboardScreen extends StatelessWidget {
                               children: [
                                 SizedBox(height: height * 0.005),
                                 Text(
-                                  'Harsh',
+                                  'User 3',
                                   style: TextStyle(
                                     color: kDefaultIconLightColor,
                                     fontSize: 20,
@@ -179,7 +179,7 @@ class LeaderboardScreen extends StatelessWidget {
                                 ),
                                 SizedBox(height: height * 0.01),
                                 Text(
-                                  '1202 pts',
+                                  '800 pts',
                                   style: TextStyle(
                                     color: kDefaultIconLightColor,
                                     fontSize: 20,
@@ -211,8 +211,8 @@ class LeaderboardScreen extends StatelessWidget {
                     itemBuilder: (context, index) {
                       // Replace the following placeholders with actual data
                       String rank = (index + 1).toString();
-                      String name = 'Ayush Baliyan'; //${index + 1}
-                      String points = '${(index + 1) * 1000} pts';
+                      String name = 'User ${index + 1}';
+                      String points = '${1100 - (index + 1) * 100} pts';
                   
                       return ListTile(
                         contentPadding: EdgeInsets.all(5),

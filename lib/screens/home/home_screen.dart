@@ -119,6 +119,7 @@ class _HomescreenState extends State<Homescreen> {
           ];
         },
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: Column(
               children: [
                 const SizedBox(height: 10),
@@ -384,13 +385,20 @@ class _HomescreenState extends State<Homescreen> {
                     ),
                   ),
                 ),
-                Padding(padding: EdgeInsets.all(10),
-                child: Text('${_response}',
-                style: TextStyle(
-                  color: kwhite,
-                  fontSize: 20,
-                ),
-                ),
+                SizedBox(height: height*0.015,),
+                Padding(
+                  padding: const EdgeInsets.all(5),                
+                  child: Container(
+                    color: kdarkBlueMuted,
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      _response,
+                    style: const TextStyle(
+                      color: kwhite,
+                      fontSize: 20,
+                    ),
+                                    ),
+                  ),
                 ),
               ],
             ),

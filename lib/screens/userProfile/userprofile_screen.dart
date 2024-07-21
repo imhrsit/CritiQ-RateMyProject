@@ -1,3 +1,6 @@
+import 'package:critiq/screens/userProfile/comingUp.dart';
+import 'package:critiq/screens/userProfile/privacyPolicy.dart';
+import 'package:critiq/screens/userProfile/termsCond.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,7 +31,7 @@ class UserProfileScreen extends StatelessWidget {
             pinned: false,
             backgroundColor: kgreyopacity,
             expandedHeight: 50,
-            flexibleSpace: FlexibleSpaceBar(
+            flexibleSpace: const FlexibleSpaceBar(
               title: Text(
                 'Profile',
                 style: TextStyle(
@@ -57,7 +60,7 @@ class UserProfileScreen extends StatelessWidget {
                 SizedBox(height: height*0.01),
                 Text(
                   user.name,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: kwhite,
                     fontSize: 24,
                   ),
@@ -65,7 +68,7 @@ class UserProfileScreen extends StatelessWidget {
                 SizedBox(height: height*0.003),
                 Text(
                   user.email,
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: kwhite,
                     fontSize: 18,
                   ),
@@ -100,7 +103,7 @@ class UserProfileScreen extends StatelessWidget {
                             ],),
                           )
                         ],
-                        annotations: <GaugeAnnotation>[
+                        annotations: const <GaugeAnnotation>[
                           GaugeAnnotation(
                             positionFactor: 0.1,
                             angle: 90,
@@ -117,7 +120,7 @@ class UserProfileScreen extends StatelessWidget {
                     ],
                   )
                 ),
-                Text(
+                const Text(
                   'Overall Rating',
                   style: TextStyle(
                     color: kwhite,
@@ -125,51 +128,66 @@ class UserProfileScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: height*0.05),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    color: kgreyopacity,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    'Terms and Conditions',
-                    style: TextStyle(
-                      color: kdarkBlue,
-                      fontSize: 18,
-                    )
-                  ),
-                ),
-                SizedBox(height: height*0.01),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    color: kgreyopacity,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Text(
-                    'Privacy Policy',
-                    style: TextStyle(
-                      color: kdarkBlue,
-                      fontSize: 18,
-                    )
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const TermsConditionScreen()));
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      color: kgreyopacity,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      'Terms and Conditions',
+                      style: TextStyle(
+                        color: kdarkBlue,
+                        fontSize: 18,
+                      )
+                    ),
                   ),
                 ),
                 SizedBox(height: height*0.01),
-                Container(
-                  padding: EdgeInsets.all(10),
-                  alignment: Alignment.centerLeft,
-                  decoration: BoxDecoration(
-                    color: kgreyopacity,
-                    borderRadius: BorderRadius.circular(10),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const PrivacyPolicyScreen()));
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      color: kgreyopacity,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      'Privacy Policy',
+                      style: TextStyle(
+                        color: kdarkBlue,
+                        fontSize: 18,
+                      )
+                    ),
                   ),
-                  child: Text(
-                    'Help and Feedback',
-                    style: TextStyle(
-                      color: kdarkBlue,
-                      fontSize: 18,
-                    )
+                ),
+                SizedBox(height: height*0.01),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ComingUpScreen()));
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    alignment: Alignment.centerLeft,
+                    decoration: BoxDecoration(
+                      color: kgreyopacity,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Text(
+                      'On the Horizon',
+                      style: TextStyle(
+                        color: kdarkBlue,
+                        fontSize: 18,
+                      )
+                    ),
                   ),
                 ),
                 SizedBox(height: height*0.01),
@@ -178,7 +196,7 @@ class UserProfileScreen extends StatelessWidget {
                     signoutUser(context);
                   },
                   child: Container(
-                    padding: EdgeInsets.all(10),
+                    padding: const EdgeInsets.all(10),
                     alignment: Alignment.centerLeft,
                     decoration: BoxDecoration(
                       color: kgreyopacity,
