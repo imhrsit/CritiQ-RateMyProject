@@ -41,7 +41,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
         body: const Padding(
           padding: EdgeInsets.all(10),
           child: Text(
-            'Critiq is committed to protecting your privacy. We collect the following information: project URLs or APK files you submit for analysis. This data is used solely to power our AI analysis and is not shared with third parties for any purpose other than improving our service. We do not collect any personally identifiable information from you unless you voluntarily provide it. You have the right to request access to, correction of, or deletion of your submitted project data. Critiq will retain your data for as long as necessary to provide and improve our service, but we will delete it upon your request.',
+            'CritiQ is committed to protecting your privacy. We collect the following information: Project URLs or APK files you submit for analysis. This data is used solely to power our AI analysis and is not shared with third parties for any purpose other than improving our service. We do not collect any personally identifiable information from you unless you voluntarily provide it. You have the right to request access to, correction of, or deletion of your submitted project data. CritiQ will retain your data for as long as necessary to provide and improve our service, but we will delete it upon your request.',
             style: TextStyle(
               color: kwhite,
               fontSize: 20,

@@ -18,6 +18,8 @@ class AuthService{
     required String email,
     required String name,
     required String password,
+    required String college,
+
   }) async {
     try {
       User user = User(
@@ -26,6 +28,7 @@ class AuthService{
         name: name,
         token: '',
         password: password,
+        college: college,
       );
 
       http.Response response = await http.post(
@@ -117,10 +120,10 @@ class AuthService{
 
   void signOutUser(BuildContext context) async {
     try {
-      final navigator = Navigator.of(context);
+      final navigator = Navigator.of(context, rootNavigator: true);
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('x-auth-token', '');
-      navigator.pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const AuthScreen()), (route) => false);
+      navigator.pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const AuthScreen()), (Route<dynamic> route) => false);
     } catch (e) {
       showSnackbar(context, e.toString());
     }

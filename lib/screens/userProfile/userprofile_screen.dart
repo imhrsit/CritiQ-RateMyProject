@@ -67,7 +67,7 @@ class UserProfileScreen extends StatelessWidget {
                 ),
                 SizedBox(height: height*0.003),
                 Text(
-                  user.email,
+                  user.college,
                   style: const TextStyle(
                     color: kwhite,
                     fontSize: 18,

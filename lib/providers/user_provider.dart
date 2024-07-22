@@ -7,7 +7,8 @@ class UserProvider extends ChangeNotifier {
     email: '',
     name: '',
     token: '',
-    password: '');
+    password: '',
+    college: '',);
   User get user => _user;
 
   void setUser(String user) {

@@ -15,6 +15,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
+  TextEditingController collegeController = TextEditingController();
   int activeTabIndex = 0;
 
   @override
@@ -124,7 +125,8 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                     Signup(
                         emailController: emailController,
                         passwordController: passwordController,
-                        nameController: nameController),
+                        nameController: nameController,
+                        collegeController: collegeController),
                     Login(
                         emailController: emailController,
                         passwordController: passwordController),

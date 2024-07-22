@@ -25,7 +25,7 @@ class _HomescreenState extends State<Homescreen> {
   String _response = '';
   
   Future<void> _sendMessage() async{
-    final message = 'Analyse this project based on the url given below and first give the overall rating for this website out of 10 and then rate it in different categories in the following order - 1. Functionality & Usability 2. Content 3. Design & Aesthetics 4. Technical Aspects 5. User Experience (UX) 6. Branding & Messaging 7. Social Proof & Trust 8. Call to Action (CTA) 9. Analytics & Tracking 10. Future-Proofing. URL - ${_urlController.text}. If you are not able to analyze the given URL then give any demo ratings of every category but dont show any other message in any case.';
+    final prompt = 'Analyse this project based on the url given below and first give the overall rating for this website out of 10 and then rate it in different categories in the following order - 1. Functionality & Usability 2. Content 3. Design & Aesthetics 4. Technical Aspects 5. User Experience (UX) 6. Branding & Messaging 7. Social Proof & Trust 8. Call to Action (CTA) 9. Analytics & Tracking 10. Future-Proofing. URL - ${_urlController.text}. If you are not able to analyze the given URL then give any demo overall rating and category ratings but do not show any other message in any case.';
     try {
       final response = await http.post(
         Uri.parse('${Constants.uri}/api/gemini'),
@@ -33,12 +33,16 @@ class _HomescreenState extends State<Homescreen> {
           'Content-Type': 'application/json; charset=UTF-8',
         },
         body: jsonEncode({
-          'message': message,
+          'message': prompt,
         }),
       );
       if (response.statusCode == 200) {
         setState(() {
           _response = response.body;
+          _response = response.body.replaceAll(RegExp(r'[*#]'), '').trim();
+          _response = _response.replaceAll(RegExp(r'\\n'), '\n');
+          _response = _response.replaceAll(RegExp(r'["{}]'), '').trim();
+          _response = _response.split('response:')[1].trim();
         });
       }
     } catch (e) {
@@ -118,8 +122,8 @@ class _HomescreenState extends State<Homescreen> {
           ),
           ];
         },
-        body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
+        body: SingleChildScrollView(  
+          primary: true,
           child: Column(
               children: [
                 const SizedBox(height: 10),
@@ -234,7 +238,7 @@ class _HomescreenState extends State<Homescreen> {
                     key: _formKey,
                     child: TextFormField(
                       controller: _urlController,
-                      
+                      autocorrect: false,
                       decoration: InputDecoration(
                         hintText: 'Enter URL here...',
                         hintStyle: const TextStyle(color: kwhite),
@@ -242,20 +246,17 @@ class _HomescreenState extends State<Homescreen> {
                           borderRadius: BorderRadius.circular(20),
                           borderSide: const BorderSide(color: kwhite),
                         ),
-                        enabled: true,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20),
                           borderSide: const BorderSide(color: kwhite),
                         ),
-                        filled: true,
-                        fillColor: kgreyopacity,
-                        focusColor: kdarkBlue,
-                        alignLabelWithHint: true,
                       ),
                       style: const TextStyle(color: kwhite),
-            
                       validator: (value) {
-                        if (value==null || value.isEmpty || value.length < 10){
+                        if (value==null || value.isEmpty || value.length < 7 ) {
+                          return 'Please enter a valid URL';
+                        }
+                        if (value.contains('http') == false && value.contains('www') == false && value.contains('.com') == false && value.contains('.in') == false && value.contains('.org') == false && value.contains('.net') == false && value.contains('.tech') == false && value.contains('localhost') == false && value.contains('.gov')==false) {
                           return 'Please enter a valid URL';
                         }
                         return null;
@@ -372,7 +373,7 @@ class _HomescreenState extends State<Homescreen> {
                     ),
                   )
                   ),
-                SizedBox(height: height*0.015),
+                SizedBox(height: height*0.03),
                 Container(
                   padding: const EdgeInsets.only(left: 10),
                   alignment: Alignment.centerLeft,
@@ -387,18 +388,14 @@ class _HomescreenState extends State<Homescreen> {
                 ),
                 SizedBox(height: height*0.015,),
                 Padding(
-                  padding: const EdgeInsets.all(5),                
-                  child: Container(
-                    color: kdarkBlueMuted,
-                    padding: const EdgeInsets.all(10),
-                    child: Text(
-                      _response,
-                    style: const TextStyle(
-                      color: kwhite,
-                      fontSize: 20,
-                    ),
-                                    ),
+                  padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 100),                
+                  child: Text(
+                    _response,
+                  style: const TextStyle(
+                    color: kwhite,
+                    fontSize: 20,
                   ),
+                                  ),
                 ),
               ],
             ),

@@ -9,11 +9,13 @@ class Signup extends StatefulWidget {
       {super.key,
       required this.emailController,
       required this.passwordController,
-      required this.nameController});
+      required this.nameController,
+      required this.collegeController});
 
   final TextEditingController emailController;
   final TextEditingController passwordController;
   final TextEditingController nameController;
+  final TextEditingController collegeController;
   final AuthService authService = AuthService();
 
   void signupUser(BuildContext context){
@@ -22,6 +24,7 @@ class Signup extends StatefulWidget {
       email: emailController.text,
       name: nameController.text,
       password: passwordController.text,
+      college: collegeController.text,
     );
   }
 
@@ -59,6 +62,15 @@ class _SignupState extends State<Signup> {
             controller: widget.passwordController,
             hinttext: "Password",
             keyboardType: TextInputType.visiblePassword,
+            textStyle: TextStyle(color: kwhite),
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          CustomTextfield(
+            controller: widget.collegeController,
+            hinttext: "College",
+            keyboardType: TextInputType.name,
             textStyle: TextStyle(color: kwhite),
           ),
           const Spacer(flex: 2),

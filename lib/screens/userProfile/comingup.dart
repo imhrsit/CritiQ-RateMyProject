@@ -41,7 +41,7 @@ class ComingUpScreen extends StatelessWidget {
         body: const Padding(
           padding: EdgeInsets.all(10),
           child: Text(
-            'Elevate your hackathons and competitions with Critiq`s innovative new feature! Create dedicated competitions within the app, eliminating the need for cumbersome dev folios or Google Forms. Our AI-powered evaluation system will automatically assess projects based on your custom criteria, ensuring a fair and transparent judging process. Winners will be crowned with confidence, and detailed credits will be awarded for each category, fostering healthy competition and recognizing individual achievements. Stay tuned for this game-changing update!',
+            'Elevate your hackathons and competitions with CritiQ`s innovative new feature! Create dedicated competitions within the app, eliminating the need for cumbersome devfolios or Google Form submissions. Our AI-powered evaluation system will automatically assess projects based on your custom criteria, ensuring a fair and transparent judging process. Winners will be crowned with confidence, and detailed credits will be awarded for each category, fostering healthy competition and recognizing individual achievements. Stay tuned for this game-changing update!',
             style: TextStyle(
               color: kwhite,
               fontSize: 20,

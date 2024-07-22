@@ -41,7 +41,7 @@ class TermsConditionScreen extends StatelessWidget {
         body: const Padding(
           padding: EdgeInsets.all(10),
           child: Text(
-            'By using Critiq, you agree to the following terms: Critiq is an AI-powered app that analyzes projects submitted via URL or APK and provides automated ratings and reviews. Critiq does not guarantee the accuracy or completeness of its AI-generated assessments, which are for informational purposes only and should not be considered professional advice. You are solely responsible for the content you submit and its compliance with all applicable laws and regulations. Critiq reserves the right to modify or discontinue the service at any time without notice. Your use of Critiq constitutes acceptance of these terms and conditions.',
+            'By using CritiQ, you agree to the following terms: CritiQ is an AI-powered app that analyzes projects submitted via URL or APK and provides automated ratings and reviews. CritiQ does not guarantee the accuracy or completeness of its AI-generated assessments, which are for informational purposes only and should not be considered professional advice. You are solely responsible for the content you submit and its compliance with all applicable laws and regulations. CritiQ reserves the right to modify or discontinue the service at any time without notice. Your use of CritiQ constitutes acceptance of these terms and conditions.',
             style: TextStyle(
               color: kwhite,
               fontSize: 20,
