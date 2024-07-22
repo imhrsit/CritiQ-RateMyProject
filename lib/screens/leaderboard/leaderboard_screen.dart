@@ -1,7 +1,5 @@
 import 'package:critiq/global/color.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 // import 'package:critiq/providers/user_provider.dart';
 // import 'package:provider/provider.dart';
@@ -40,6 +38,8 @@ class LeaderboardScreen extends StatelessWidget {
           ];
         },
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          primary: true,
           child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

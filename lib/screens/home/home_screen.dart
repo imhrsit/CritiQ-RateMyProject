@@ -122,7 +122,8 @@ class _HomescreenState extends State<Homescreen> {
           ),
           ];
         },
-        body: SingleChildScrollView(  
+        body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           primary: true,
           child: Column(
               children: [

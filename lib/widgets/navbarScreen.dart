@@ -1,5 +1,4 @@
 import 'package:critiq/global/color.dart';
-// import 'package:critiq/screens/competition/competition_screen.dart';
 import 'package:critiq/screens/home/home_screen.dart';
 import 'package:critiq/screens/leaderboard/leaderboard_screen.dart';
 import 'package:critiq/screens/userProfile/userprofile_screen.dart';
@@ -20,10 +19,6 @@ class NavBarScreen extends StatelessWidget {
           screen: Homescreen(),
           item: ItemConfig(icon: Icon(Icons.home_rounded), title: "Home", activeForegroundColor: kdarkBlue, inactiveForegroundColor: kwhite),
           ),
-        // PersistentTabConfig(
-        //   screen: CompetitionScreen(),
-        //   item: ItemConfig(icon: Icon(Icons.code_rounded), title: "Competitions", activeForegroundColor: kdarkBlue, inactiveForegroundColor: kwhite),
-        //   ),
         PersistentTabConfig(
           screen: LeaderboardScreen(),
           item: ItemConfig(icon: Icon(Icons.format_list_numbered_rounded), title: "Leaderboard", activeForegroundColor: kdarkBlue, inactiveForegroundColor: kwhite),
