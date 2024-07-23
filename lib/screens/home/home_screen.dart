@@ -43,6 +43,7 @@ class _HomescreenState extends State<Homescreen> {
           _response = _response.replaceAll(RegExp(r'\\n'), '\n');
           _response = _response.replaceAll(RegExp(r'["{}]'), '').trim();
           _response = _response.split('response:')[1].trim();
+          
         });
       }
     } catch (e) {
@@ -160,7 +161,7 @@ class _HomescreenState extends State<Homescreen> {
                               ),
                               child: const Center(
                                 child: Text(
-                                  'Hey, I`m watching your ratings. See you at the leaderboard! 🏆',
+                                  'Hey, I`m watching your ratings. your last project stands at. See you at the leaderboard! 🏆',
                                   style: TextStyle(
                                     color: kwhite,
                                     fontSize: 16,

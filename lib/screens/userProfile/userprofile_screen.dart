@@ -92,7 +92,7 @@ class UserProfileScreen extends StatelessWidget {
                         ),
                         pointers: <GaugePointer>[
                           RangePointer(
-                            value: 70, //to be change dynamically acc to points later //progressValue
+                            value: 0, //to be change dynamically acc to points later //progressValue
                             cornerStyle: CornerStyle.bothCurve,
                             width: 0.2,
                             sizeUnit: GaugeSizeUnit.factor,
@@ -108,7 +108,7 @@ class UserProfileScreen extends StatelessWidget {
                             positionFactor: 0.1,
                             angle: 90,
                             widget: Text(
-                              '7/10',  //progressValue.toStringAsFixed(0) + ' / 100'
+                              '0/10',
                               style: TextStyle(
                                 color: kwhite,
                                 fontSize: 24,
